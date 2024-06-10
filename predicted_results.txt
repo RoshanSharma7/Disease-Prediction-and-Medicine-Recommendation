@@ -1,0 +1,10 @@
+Predicted Disease: Cervical spondylosis
+Description: Cervical spondylosis is a degenerative condition of the cervical spine.
+Precautions:
+- use heating pad or cold pack, exercise, take otc pain reliver, consult doctor
+Medications:
+- ['Pain relievers', 'Muscle relaxants', 'Physical therapy', 'Neck braces', 'Corticosteroids']
+Workouts:
+- Include anti-inflammatory foods, Consume omega-3 fatty acids, Include vitamin D-rich foods, Stay hydrated, Consume antioxidant-rich foods, Limit processed foods, Include lean proteins, Practice good posture, Consult a healthcare professional, Engage in regular exercise
+Diets:
+- ['Arthritis Diet', 'Anti-Inflammatory Diet', 'Omega-3-rich foods', 'Fruits and vegetables', 'Whole grains']

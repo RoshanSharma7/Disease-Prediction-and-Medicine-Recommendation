@@ -1,7 +1,9 @@
-from flask import Flask, request, render_template
+from flask import Flask, render_template, request, send_file, redirect, url_for, session
+import requests
 import numpy as np
 import pandas as pd
 import pickle
+import os
 
 # load the datasets
 sym_des = pd.read_csv("datasets/symtoms_df.csv")
@@ -15,6 +17,10 @@ diets = pd.read_csv("datasets/diets.csv")
 svc = pickle.load(open('models/svc.pkl','rb'))
 
 app = Flask(__name__)
+app.secret_key = os.urandom(24)  # generate a secret key
+
+# create a dummy database for users
+users = {}
 
 # helper section
 def helper(dis):
@@ -46,9 +52,14 @@ def get_predicted_value(patient_symptoms):
     return diseases_list[svc.predict([input_vector])[0]]
 
 # creating roots
+
 @app.route('/')
 def index():
-    return render_template('index.html')
+    # session['user'] = users[username]
+    if 'username' in session:
+        return render_template('index.html', username=session['username'])
+    else:
+        return redirect(url_for('login'))
 
 @app.route('/predict', methods=['POST', 'GET'])
 def predict():
@@ -80,6 +91,69 @@ def developer():
 @app.route('/blog')
 def blog():
     return render_template('blog.html')
+
+@app.route('/download', methods=['POST'])
+def download():
+    if request.method == 'POST':
+        predicted_disease = request.form.get('predicted_disease')
+        dis_des = request.form.get('dis_des')
+        dis_pre = request.form.getlist('dis_pre')
+        dis_med = request.form.getlist('dis_med')
+        dis_wrkout = request.form.getlist('dis_wrkout')
+        dis_die = request.form.getlist('dis_die')
+
+        # Create a text file with the predicted results
+        with open('predicted_results.txt', 'w') as f:
+            f.write(f'Predicted Disease: {predicted_disease}\n')
+            f.write(f'Description: {dis_des}\n')
+            f.write('Precautions:\n')
+            for precaution in dis_pre:
+                f.write(f'- {precaution}\n')
+            f.write('Medications:\n')
+            for medication in dis_med:
+                f.write(f'- {medication}\n')
+            f.write('Workouts:\n')
+            for workout in dis_wrkout:
+                f.write(f'- {workout}\n')
+            f.write('Diets:\n')
+            for diet in dis_die:
+                f.write(f'- {diet}\n')
+
+        # Return the file as a downloadable file
+        return send_file('predicted_results.txt', as_attachment=True, download_name='predicted_results.txt')
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        if username in users and users[username] == password:
+            session['username'] = username
+            return redirect(url_for('index'))
+        else:
+            return 'Invalid username or password', 401
+    return render_template('login.html')
+
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        email = request.form['email']
+        if username not in users:
+            users[username] = password
+            return redirect(url_for('login'))
+        else:
+            return 'Username already taken', 400
+    return render_template('register.html')
+
+@app.route('/logout')
+def logout():
+    session.pop('username', None)
+    return redirect(url_for('login'))
+
+
 
 
 # python main
