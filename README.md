@@ -25,7 +25,7 @@ This project utilizes machine learning algorithms to predict diseases from given
 ### Steps
 1. Clone the repository:
     ```sh
-    git clone https://github.com/yourusername/Disease-Prediction-and-Medicine-Recommendation.git
+    git clone https://github.com/RoshanSharma7/Disease-Prediction-and-Medicine-Recommendation.git
     ```
 2. Navigate to the project directory:
     ```sh
