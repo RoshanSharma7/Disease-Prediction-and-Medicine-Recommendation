@@ -1,14 +1,14 @@
 # Disease Prediction and Medicine Recommendation
 
-A machine learning model built using Python to predict diseases based on symptoms and recommend appropriate medicines also download the report.
+A machine learning model built using Python to predict diseases based on symptoms and recommend appropriate medicines, also download the report.
 
 ## Description
-This project utilizes machine learning algorithms to predict diseases from given symptoms and suggest suitable medicines, Description, precaution, workout and dietplan. The goal is to provide a quick and reliable way for users to get medical predictions and recommendations, potentially improving early diagnosis and treatment.
+This project utilizes machine learning algorithms to predict diseases from given symptoms and suggest suitable medicines, Description, precautions, workout, and diet plan. The goal is to provide a quick and reliable way for users to get medical predictions and recommendations, potentially improving early diagnosis and treatment.
 
 ## Installation
 
 ### Prerequisites
-- Python3 (letest Version)
+- Python3 (latest Version)
 - `pip` (Python package installer)
 
 ## PacKages 
@@ -19,7 +19,7 @@ This project utilizes machine learning algorithms to predict diseases from given
 
 ## tools
 1. Pycharm
-2. Jupyter notbook
+2. Jupyter notebook
 3. Browser
    
 ### Steps
@@ -56,12 +56,11 @@ python main.py
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## Author
-This project was developed by Roshan Kumar Sharma. You can reach out via: -
-Email : roshan.amlai96@gmail.com 
-LinkedIn : https://www.linkedin.com/in/RoshanSharma7/
-Twitter : https://www.twitter.com/imroshansharma7
-portfolio : https://roshansharma7.github.io/Roshan.github.io/
-for any questions or collaboration opportunities.
+Roshan Kumar Sharma developed this project. You can reach out via: -
+- Email: roshan.amlai96@gmail.com 
+- LinkedIn: https://www.linkedin.com/in/RoshanSharma7/
+- Twitter: https://www.twitter.com/imroshansharma7
+- portfolio: https://roshansharma7.github.io/Roshan.github.io/
 
 ## Notes
-Please follow me on all platform.
+Please follow me on all platforms.
